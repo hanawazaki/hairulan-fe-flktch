@@ -51,7 +51,7 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { useStoreAuth } from "../../stores/storeAuth";
-import AuthLayout from "../../layouts/AuthLayout.vue";
+import AuthLayout from "../../layouts/authlayout.vue";
 
 const storeAuth = useStoreAuth();
 const formData = reactive({

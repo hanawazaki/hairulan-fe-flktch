@@ -5,9 +5,9 @@
         <button
           @click="prev"
           :class="{ disabled: currentPage === 1 }"
-          class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          class="px-6 py-4 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         >
-          prev
+          <font-awesome-icon icon="fa-solid fa-chevron-left" />
         </button>
       </li>
       <li>
@@ -15,7 +15,7 @@
           v-for="(page, index) in totalPages"
           :key="index"
           :class="{ active: currentPage === page }"
-          class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          class="px-6 py-4 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           @click="goto(page)"
         >
           {{ page }}
@@ -25,9 +25,9 @@
         <button
           @click="next"
           :class="{ disabled: currentPage === totalPages }"
-          class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          class="px-6 py-4 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         >
-          next
+          <font-awesome-icon icon="fa-solid fa-chevron-right" />
         </button>
       </li>
     </ul>

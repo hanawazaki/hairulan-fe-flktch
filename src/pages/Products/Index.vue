@@ -1,7 +1,7 @@
 <template>
   <AuthenticatedLayout>
-    <div class="container mx-auto">
-      <div class="my-3 border border-gray-600">breadcrumbs</div>
+    <div class="mx-auto bg-white px-[70px]">
+      <Breadcrumbs />
       <div class="flex">
         <!-- left -->
         <div class="w-3/12 pr-8">
@@ -28,25 +28,29 @@
         >
           <h2>LOADING....</h2>
         </div>
-        <div class="w-9/12 border border-gray-600" v-else>
-          <div class="flex justify-between gap-3 py-5">
+        <div class="w-9/12" v-else>
+          <div class="flex justify-between gap-3 py-5 mb-7">
             <div class="flex justify-between gap-2 items-center">
-              menampilkan
-              <select name="" id="" class="border border-gray-600">
+              <label class="text-customGray2 font-regular">Menampilkan</label>
+              <select
+                name=""
+                id=""
+                class="p-2 text-customGray2 bg-[#f2f2f2] outline-none"
+              >
                 <option value="3">3</option>
                 <option value="6">6</option>
                 <option value="12">12</option>
               </select>
-              dari {{ storeProduct.products.total }}
+              <label class="text-customGray2 font-regular">
+                dari {{ storeProduct.products.total }}</label
+              >
             </div>
-            <div class="flex">
-              <select name="" id="" class="border border-gray-600">
-                <option value="product-asc">Product name ASC</option>
-                <option value="product-desc">Product name DESC</option>
-                <option value="price-asc">Price ASC</option>
-                <option value="price-desc">Price Desc</option>
-                <option value="date-asc">Date ASC</option>
-                <option value="date-desc">Date Desc</option>
+            <div class="flex items-center">
+              <label class="text-customGray2 font-regular mr-4">Urutkan</label>
+              <select class="p-2 text-customGray2 bg-[#f2f2f2] outline-none">
+                <option value="product">Nama Produk</option>
+                <option value="price">Price</option>
+                <option value="date">Date</option>
               </select>
             </div>
           </div>
@@ -71,13 +75,14 @@
 </template>
 
 <script setup>
-import AuthenticatedLayout from "../../layouts/AuthenticatedLayout.vue";
+import AuthenticatedLayout from "../../layouts/authenticatedlayout.vue";
 import { ref, onMounted, reactive, watchEffect, computed } from "vue";
 import { useStoreProduct } from "../../stores/storeProduct";
 import { useStoreAuth } from "../../stores/storeAuth";
 import { useRouter } from "vue-router";
 import Card from "../../components/Card.vue";
-import Pagination from "../../components/Pagination.vue";
+import Pagination from "../../components/pagination.vue";
+import Breadcrumbs from "../../components/breadcrumbs.vue";
 
 const storeAuth = useStoreAuth();
 const storeProduct = useStoreProduct();

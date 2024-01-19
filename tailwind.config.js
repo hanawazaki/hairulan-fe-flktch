@@ -9,12 +9,14 @@ export default {
       boxShadow: {
         'customShdw': '0px 1px 4px 0px rgba(0, 0, 0, 0.25)',
         'customShdwBtn': '0px 7px 6px 0px rgba(0, 0, 0, 0.17)',
-        'customShdwContainer': '0px 1px 12px 0px rgba(0, 0, 0, 0.25)'
+        'customShdwContainer': '0px 1px 12px 0px rgba(0, 0, 0, 0.25)',
+        'customShdwSearch': '0px 4px 4px 0px rgba(0, 0, 0, 0.10);'
       },
       colors: {
         'customRed': '#730C07',
         'customOrange': '#EB3F36',
         'customGray': '#7C7C7C',
+        'customGray2': '#696969',
       }
     },
   },
