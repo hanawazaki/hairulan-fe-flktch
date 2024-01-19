@@ -1,7 +1,32 @@
-# Vue 3 + Vite
+# How To Install & Run
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Pastikan Anda memiliki beberapa prasyarat yang sudah terinstall di sistem Anda:
 
-## Recommended IDE Setup
+- [Node.js](https://nodejs.org/) 
+- [npm](https://www.npmjs.com/) 
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Instalasi
+
+1. Clone repositori ini ke sistem Anda:
+   git clone
+   ```bash
+   https://github.com/hanawazaki/hairulan-fe-flktch
+   
+2. Pindah ke direktori proyek:
+   ```bash
+   cd hairulan-fe-flktch
+3. Install semua dependensi dengan perintah berikut:
+   ```bash
+   npm install
+
+## Menjalankan Aplikasi
+
+Setelah Anda selesai menginstal dependensi, Anda dapat menjalankan aplikasi dengan perintah berikut:
+
+1. jalankan aplikasi dengan perintah :
+
+   ```bash
+   npm run dev
+2. Buka link berikut pada browser (port secara default)
+   ```bash
+   http://127.0.0.1:5173/
