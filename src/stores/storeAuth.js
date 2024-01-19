@@ -5,6 +5,7 @@ export const useStoreAuth = defineStore('storeAuth', {
   state: () => {
     return {
       user: {},
+      isTokenAvailable: false
     }
   },
   actions: {
@@ -34,8 +35,14 @@ export const useStoreAuth = defineStore('storeAuth', {
         console.log("error", error)
       }
     },
-    checkLogin() {
-
+    logout() {
+      localStorage.removeItem("token");
+      this.isTokenAvailable = false;
+      this.router.push("/login");
+    },
+    checkTokenAvailability() {
+      const token = localStorage.getItem("token");
+      this.isTokenAvailable = !!token;
     }
   },
   getters: {

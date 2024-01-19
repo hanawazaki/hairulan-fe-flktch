@@ -1,53 +1,79 @@
 <template>
-  <div>
-    <button class="px-4 py-2 border border-gray-600" @click="handleLogout">
-      Logout
-    </button>
-  </div>
-  <div class="mb-5">
-    <input
-      type="number"
-      v-model="params.price_from"
-      class="border border-gray-600"
-    />
-    <input
-      type="number"
-      v-model="params.price_to"
-      class="border border-gray-600"
-    />
-  </div>
-  <div class="flex gap-3">
-    <button
-      class="px-4 py-2 border border-gray-600"
-      @click="handleSorting('ASC')"
-    >
-      ASC
-    </button>
+  <AuthenticatedLayout>
+    <div class="container mx-auto">
+      <div class="my-3 border border-gray-600">breadcrumbs</div>
+      <div class="flex">
+        <!-- left -->
+        <div class="w-3/12 pr-8">
+          <div class="bg-white p-4 rounded shadow border border-gray-600">
+            <h2 class="text-xl font-semibold mb-4">Filter Sidebar</h2>
+            <div class="mb-5 flex flex-col gap-3">
+              <input
+                type="number"
+                v-model="params.price_from"
+                class="border border-gray-600"
+              />
+              <input
+                type="number"
+                v-model="params.price_to"
+                class="border border-gray-600"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- right -->
+        <div
+          v-if="storeProduct.loading == true"
+          class="flex justify-center items-center h-screen"
+        >
+          <h2>LOADING....</h2>
+        </div>
 
-    <button
-      class="px-4 py-2 border border-gray-600"
-      @click="handleSorting('DESC')"
-    >
-      DESC
-    </button>
-  </div>
-  <div class="flex justify-between gap-3 mt-6">
-    <div
-      v-for="(product, index) in storeProduct.products"
-      :key="index"
-      class="border border-gray-600 flex flex-col"
-    >
-      <label>{{ product.name }}</label>
-      <label>{{ product.price }}</label>
+        <div class="w-9/12 border border-gray-600" v-else>
+          <div class="flex justify-end gap-3">
+            <button
+              class="px-3 py-1 border border-gray-600"
+              @click="handleSorting('ASC')"
+            >
+              ASC
+            </button>
+
+            <button
+              class="px-4 py-2 border border-gray-600"
+              @click="handleSorting('DESC')"
+            >
+              DESC
+            </button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card
+              :product="product"
+              v-for="(product, index) in paginatedItems"
+              :key="index"
+            />
+          </div>
+          {{ storeProduct.products.total }}
+          <Pagination
+            :total="storeProduct.product_list.length"
+            :itemsPerpage="perPage"
+            v-model:current-page="currentPage"
+            @update:current-page="handleChangepage"
+            class="my-[55px]"
+          />
+        </div>
+      </div>
     </div>
-  </div>
+  </AuthenticatedLayout>
 </template>
 
 <script setup>
-import { ref, onMounted, reactive, watchEffect } from "vue";
+import AuthenticatedLayout from "../../layouts/AuthenticatedLayout.vue";
+import { ref, onMounted, reactive, watchEffect, computed } from "vue";
 import { useStoreProduct } from "../../stores/storeProduct";
 import { useStoreAuth } from "../../stores/storeAuth";
 import { useRouter } from "vue-router";
+import Card from "../../components/Card.vue";
+import Pagination from "../../components/Pagination.vue";
 
 const storeAuth = useStoreAuth();
 const storeProduct = useStoreProduct();
@@ -60,20 +86,17 @@ const params = reactive({
   orderBy: "product_name",
   sort: "ASC",
 });
-const isTokenAvailable = ref(false);
 const router = useRouter();
-const checkTokenAvailability = () => {
-  const token = localStorage.getItem("token");
-  isTokenAvailable.value = !!token;
-};
+const perPage = ref(5);
+const currentPage = ref(1);
 
 watchEffect(() => {
   if (storeAuth.user.name) {
-    isTokenAvailable.value = true;
+    storeAuth.isTokenAvailable = true;
   } else {
-    isTokenAvailable.value = false;
+    storeAuth.isTokenAvailable = false;
   }
-  checkTokenAvailability();
+  storeAuth.checkTokenAvailability();
 });
 
 const handleSorting = (param) => {
@@ -81,16 +104,19 @@ const handleSorting = (param) => {
   params.sort = param;
 };
 
-const handleLogout = () => {
-  localStorage.removeItem("token");
-  isTokenAvailable.value = false;
-  router.push("/login");
-};
+storeAuth.checkTokenAvailability();
+storeProduct.getProducts(params);
 
-onMounted(() => {
-  checkTokenAvailability();
-  storeProduct.getProducts(params);
+const paginatedItems = computed(() => {
+  const start = (currentPage.value - 1) * perPage.value;
+  const end = start + perPage.value;
+
+  return storeProduct.product_list.slice(start, end);
 });
+
+const handleChangepage = (page) => {
+  console.log("change to page", page);
+};
 </script>
 
 <style lang="scss" scoped></style>

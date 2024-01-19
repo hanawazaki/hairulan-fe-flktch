@@ -8,22 +8,26 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: HomeProduct
+    component: HomeProduct,
+    meta: { layout: 'AuthenticatedLayout' }
   },
   {
     path: "/product/:id",
     name: "ProductDetail",
-    component: ProductDetail
+    component: ProductDetail,
+    meta: { layout: 'AuthenticatedLayout' }
   },
   {
     path: "/login",
     name: "login",
-    component: Login
+    component: Login,
+    meta: { layout: 'AuthLayout' }
   },
   {
     path: "/register",
     name: "register",
-    component: Register
+    component: Register,
+    meta: { layout: 'AuthLayout' }
   },
 ]
 

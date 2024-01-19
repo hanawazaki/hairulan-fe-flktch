@@ -1,10 +1,9 @@
-<script setup>
-import Navbar from "./components/navbar.vue";
-</script>
+<script setup></script>
 
 <template>
-  <!-- <Navbar /> -->
-  <routerView />
+  <div class="p-8">
+    <routerView />
+  </div>
 </template>
 
 <style scoped></style>
