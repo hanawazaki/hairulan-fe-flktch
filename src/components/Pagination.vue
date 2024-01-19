@@ -3,6 +3,8 @@
     <ul class="flex -space-x-px justify-center">
       <li>
         <button
+          @click="prev"
+          :class="{ disabled: currentPage === 1 }"
           class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         >
           prev
@@ -21,6 +23,8 @@
       </li>
       <li>
         <button
+          @click="next"
+          :class="{ disabled: currentPage === totalPages }"
           class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         >
           next
@@ -59,7 +63,12 @@ const state = reactive({
 const totalPages = computed(() => Math.ceil(props.total / props.itemsPerpage));
 // console.log("totalPages", totalPages);
 
-const prev = () => {};
+const prev = () => {
+  if (state.currentPage > 1) {
+    state.currentPage--;
+    instance.emit("update:currentPage", state.currentPage);
+  }
+};
 
 const goto = (page) => {
   // console.log(page);
@@ -67,12 +76,21 @@ const goto = (page) => {
   instance.emit("update:currentPage", state.currentPage);
 };
 
-const next = () => {};
+const next = () => {
+  if (state.currentPage < totalPages.value) {
+    state.currentPage++;
+    instance.emit("update:currentPage", state.currentPage);
+  }
+};
 </script>
 
 <style scoped>
 .active {
   background-color: gray;
   color: white;
+}
+
+.disabled {
+  cursor: not-allowed;
 }
 </style>

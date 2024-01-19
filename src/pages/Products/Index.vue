@@ -28,22 +28,27 @@
         >
           <h2>LOADING....</h2>
         </div>
-
         <div class="w-9/12 border border-gray-600" v-else>
-          <div class="flex justify-end gap-3">
-            <button
-              class="px-3 py-1 border border-gray-600"
-              @click="handleSorting('ASC')"
-            >
-              ASC
-            </button>
-
-            <button
-              class="px-4 py-2 border border-gray-600"
-              @click="handleSorting('DESC')"
-            >
-              DESC
-            </button>
+          <div class="flex justify-between gap-3 py-5">
+            <div class="flex justify-between gap-2 items-center">
+              menampilkan
+              <select name="" id="" class="border border-gray-600">
+                <option value="3">3</option>
+                <option value="6">6</option>
+                <option value="12">12</option>
+              </select>
+              dari {{ storeProduct.product_list.length }}
+            </div>
+            <div class="flex">
+              <select name="" id="" class="border border-gray-600">
+                <option value="product-asc">Product name ASC</option>
+                <option value="product-desc">Product name DESC</option>
+                <option value="price-asc">Price ASC</option>
+                <option value="price-desc">Price Desc</option>
+                <option value="date-asc">Date ASC</option>
+                <option value="date-desc">Date Desc</option>
+              </select>
+            </div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card
@@ -87,7 +92,7 @@ const params = reactive({
   sort: "ASC",
 });
 const router = useRouter();
-const perPage = ref(5);
+const perPage = ref(6);
 const currentPage = ref(1);
 
 watchEffect(() => {

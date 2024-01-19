@@ -524,53 +524,7 @@ export const useStoreProduct = defineStore('storeProduct', {
             },
           ],
         },
-        {
-          id: 3,
-          name: "APEL Bandung",
-          price: "50000",
-          description:
-            "Microlot coffee renowned for clean with loud and clear flavour. Handled by respective family with amazing sortation! This coffee is a natural processed, a new  processed for this family! Highlighted with huge green apple flavor yet we call this coffee as Apel Malang, great for filter coffee",
-          short_description: "APEL MALANG",
-          slug: "apel-malang-245",
-          min_order: 0,
-          is_merchant_discount: 0,
-          discount_amount: 0,
-          product_type_id: 1,
-          is_active: 1,
-          is_deleted: 0,
-          created_at: "2023-06-19T04:35:36.000000Z",
-          updated_at: "2023-06-19T04:35:36.000000Z",
-          product_type: {
-            id: 1,
-            name: "Roasted Bean",
-            slug: "roasted-bean-2",
-            is_deleted: 0,
-            created_at: "2023-06-19T04:31:00.000000Z",
-            updated_at: "2023-06-19T04:31:00.000000Z",
-          },
-          images: [
-            {
-              id: 3,
-              product_id: 2,
-              image_url:
-                "https://res.cloudinary.com/pt-folka-indonesia-teknologi/image/upload/v1640021242/2021-01-08T12_21_24.133Z_memuoh.png",
-              is_primary: 1,
-              is_deleted: 0,
-              created_at: "2023-06-19T04:35:36.000000Z",
-              updated_at: "2023-06-19T04:35:36.000000Z",
-            },
-            {
-              id: 4,
-              product_id: 2,
-              image_url:
-                "https://res.cloudinary.com/pt-folka-indonesia-teknologi/image/upload/v1640021258/2021-01-08T12_21_26.405Z_seaf8r.png",
-              is_primary: 0,
-              is_deleted: 0,
-              created_at: "2023-06-19T04:35:36.000000Z",
-              updated_at: "2023-06-19T04:35:36.000000Z",
-            },
-          ],
-        },
+
       ]
     }
   },
