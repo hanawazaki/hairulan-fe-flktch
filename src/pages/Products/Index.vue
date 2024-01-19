@@ -5,19 +5,535 @@
       <div class="flex">
         <!-- left -->
         <div class="w-3/12 pr-8">
-          <div class="bg-white p-4 rounded shadow border border-gray-600">
-            <h2 class="text-xl font-semibold mb-4">Filter Sidebar</h2>
-            <div class="mb-5 flex flex-col gap-3">
-              <input
-                type="number"
-                v-model="params.price_from"
-                class="border border-gray-600"
-              />
-              <input
-                type="number"
-                v-model="params.price_to"
-                class="border border-gray-600"
-              />
+          <div class="bg-white">
+            <!-- accordion1 -->
+            <div class="accordion">
+              <div class="border mb-2 rounded">
+                <div
+                  class="flex justify-between items-center p-4 cursor-pointer bg-[#f5f5f5]"
+                  @click="toggleAccordionItem1"
+                >
+                  <span class="text-lg font-normal text-customGray2"
+                    >Origin</span
+                  >
+                  <svg
+                    v-if="!accordionItem1"
+                    class="w-6 h-6 transform rotate-0 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                  <svg
+                    v-else
+                    class="w-6 h-6 transform rotate-180 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </div>
+                <div v-if="accordionItem1" class="p-4">
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Aceh</label>
+                    </div>
+                    <span class="ml-auto">(8)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Semarang</label>
+                    </div>
+                    <span class="ml-auto">(2)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Bandung</label>
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Jawa</label>
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Amerika Selatan</label>
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Lain - lain</label>
+                    </div>
+                    <span class="ml-auto">(8)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- accordion2 -->
+            <div class="accordion">
+              <div class="border mb-2 rounded">
+                <div
+                  class="flex justify-between items-center p-4 cursor-pointer bg-[#f5f5f5]"
+                  @click="toggleAccordionItem2"
+                >
+                  <span class="text-lg font-normal text-customGray2"
+                    >Species</span
+                  >
+                  <svg
+                    v-if="!accordionItem2"
+                    class="w-6 h-6 transform rotate-0 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                  <svg
+                    v-else
+                    class="w-6 h-6 transform rotate-180 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </div>
+                <div v-if="accordionItem2" class="p-4">
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Arabika</label>
+                    </div>
+                    <span class="ml-auto">(8)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Robusta</label>
+                    </div>
+                    <span class="ml-auto">(2)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Blend</label>
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- accordion3 -->
+            <div class="accordion">
+              <div class="border mb-2 rounded">
+                <div
+                  class="flex justify-between items-center p-4 cursor-pointer bg-[#f5f5f5]"
+                  @click="toggleAccordionItem3"
+                >
+                  <span class="text-lg font-normal text-customGray2"
+                    >Roast Level</span
+                  >
+                  <svg
+                    v-if="!accordionItem3"
+                    class="w-6 h-6 transform rotate-0 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                  <svg
+                    v-else
+                    class="w-6 h-6 transform rotate-180 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </div>
+                <div v-if="accordionItem3" class="p-4">
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Light Roast</label>
+                    </div>
+                    <span class="ml-auto">(8)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Medium Roast</label>
+                    </div>
+                    <span class="ml-auto">(2)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Dark Roast</label>
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1"
+                        >Light to Medium Roast</label
+                      >
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- accordion4 -->
+            <div class="accordion">
+              <div class="border mb-2 rounded">
+                <div
+                  class="flex justify-between items-center p-4 cursor-pointer bg-[#f5f5f5]"
+                  @click="toggleAccordionItem4"
+                >
+                  <span class="text-lg font-normal text-customGray2"
+                    >Tasted</span
+                  >
+                  <svg
+                    v-if="!accordionItem4"
+                    class="w-6 h-6 transform rotate-0 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                  <svg
+                    v-else
+                    class="w-6 h-6 transform rotate-180 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </div>
+                <div v-if="accordionItem4" class="p-4">
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Sweet</label>
+                    </div>
+                    <span class="ml-auto">(8)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Floral</label>
+                    </div>
+                    <span class="ml-auto">(2)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Fruity</label>
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Spices</label>
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Cocoa</label>
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Nutty</label>
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- accordion5 -->
+            <div class="accordion">
+              <div class="border mb-2 rounded">
+                <div
+                  class="flex justify-between items-center p-4 cursor-pointer bg-[#f5f5f5]"
+                  @click="toggleAccordionItem5"
+                >
+                  <span class="text-lg font-normal text-customGray2"
+                    >Processing</span
+                  >
+                  <svg
+                    v-if="!accordionItem4"
+                    class="w-6 h-6 transform rotate-0 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                  <svg
+                    v-else
+                    class="w-6 h-6 transform rotate-180 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </div>
+                <div v-if="accordionItem5" class="p-4">
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Natural</label>
+                    </div>
+                    <span class="ml-auto">(8)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Honey Gold</label>
+                    </div>
+                    <span class="ml-auto">(2)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Honey Yellow</label>
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-center space-x-4 text-[#868686] mb-[14px]"
+                  >
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        id="origin-checkbox-1"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <label for="origin-checkbox-1">Spices</label>
+                    </div>
+                    <span class="ml-auto">(7)</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -91,6 +607,11 @@ const price_from = ref("");
 const price_to = ref("");
 const orderBy = ref("product_name");
 const sort = ref("ASC");
+const accordionItem1 = ref(true);
+const accordionItem2 = ref(true);
+const accordionItem3 = ref(true);
+const accordionItem4 = ref(true);
+const accordionItem5 = ref(true);
 
 const params = reactive({
   keyword: "",
@@ -115,6 +636,26 @@ watchEffect(() => {
 const handleSorting = (param) => {
   console.log(param);
   params.sort = param;
+};
+
+const toggleAccordionItem1 = () => {
+  accordionItem1.value = !accordionItem1.value;
+};
+
+const toggleAccordionItem2 = () => {
+  accordionItem2.value = !accordionItem2.value;
+};
+
+const toggleAccordionItem3 = () => {
+  accordionItem3.value = !accordionItem3.value;
+};
+
+const toggleAccordionItem4 = () => {
+  accordionItem4.value = !accordionItem4.value;
+};
+
+const toggleAccordionItem5 = () => {
+  accordionItem5.value = !accordionItem5.value;
 };
 
 storeAuth.checkTokenAvailability();
