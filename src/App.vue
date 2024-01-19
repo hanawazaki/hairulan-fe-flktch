@@ -1,9 +1,15 @@
 <script setup></script>
 
 <template>
-  <div class="p-8">
+  <div>
     <routerView />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@import "./assets/css/fonts.css";
+
+* {
+  font-family: "Gotham", sans-serif;
+}
+</style>

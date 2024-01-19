@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.auth-container {
+  @apply mx-auto bg-white bg-[#fff] rounded-[10px] w-[568px] h-[509px] px-[34px] py-[42px] shadow-customShdwContainer;
+}
+
+.auth-input {
+  @apply shadow-customShdw pl-5 w-full outline-none h-[59px] rounded-[7px] text-base font-normal bg-white;
+}
+
+.button-primary {
+  @apply bg-customOrange shadow-customShdwBtn text-white text-lg font-normal w-full px-4 py-2 rounded-[7px];
+}

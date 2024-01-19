@@ -149,7 +149,7 @@ export const useStoreProduct = defineStore('storeProduct', {
           ],
         },
         {
-          id: 3,
+          id: 4,
           name: "APEL Bandung",
           price: "50000",
           description:
@@ -196,7 +196,7 @@ export const useStoreProduct = defineStore('storeProduct', {
           ],
         },
         {
-          id: 3,
+          id: 5,
           name: "APEL Bandung",
           price: "50000",
           description:
@@ -243,7 +243,7 @@ export const useStoreProduct = defineStore('storeProduct', {
           ],
         },
         {
-          id: 3,
+          id: 6,
           name: "APEL Bandung",
           price: "50000",
           description:
@@ -290,7 +290,7 @@ export const useStoreProduct = defineStore('storeProduct', {
           ],
         },
         {
-          id: 3,
+          id: 7,
           name: "APEL Bandung",
           price: "50000",
           description:
@@ -337,7 +337,7 @@ export const useStoreProduct = defineStore('storeProduct', {
           ],
         },
         {
-          id: 3,
+          id: 8,
           name: "APEL Bandung",
           price: "50000",
           description:
@@ -384,7 +384,7 @@ export const useStoreProduct = defineStore('storeProduct', {
           ],
         },
         {
-          id: 3,
+          id: 9,
           name: "APEL Bandung",
           price: "50000",
           description:
@@ -431,7 +431,7 @@ export const useStoreProduct = defineStore('storeProduct', {
           ],
         },
         {
-          id: 3,
+          id: 10,
           name: "APEL Bandung",
           price: "50000",
           description:
@@ -478,7 +478,7 @@ export const useStoreProduct = defineStore('storeProduct', {
           ],
         },
         {
-          id: 3,
+          id: 11,
           name: "APEL Bandung",
           price: "50000",
           description:
@@ -525,7 +525,8 @@ export const useStoreProduct = defineStore('storeProduct', {
           ],
         },
 
-      ]
+      ],//dummy
+      product_detail: {}
     }
   },
   actions: {
@@ -536,32 +537,49 @@ export const useStoreProduct = defineStore('storeProduct', {
 
       let parameters = {
         keyword: params.keyword,
-        price_from: params.price_from,
-        price_to: params.price_to,
+        price: params.price,
         page: params.page,
         limit: params.limit,
-        order: `${params.orderBy},${params.sort}`
+        order: params.order
       }
 
       try {
-        const res = await axios.get(`https://techtest.folkatech.com/api/product?keyword=${parameters.keyword}&price=${parameters.price_from},${parameters.price_to}&page=${parameters.page}&limit=${parameters.limit}&order=${parameters.order}`, token)
+        const res = await axios.get(`https://techtest.folkatech.com/api/product?keyword=${parameters.keyword}&price=${parameters.price}&page=${parameters.page}&limit=${parameters.limit}&order=${parameters.order}`, token)
         const result = await res.data.data
-        console.log("res", result)
+        console.log("res", res)
+        console.log("result", result)
         this.products = result
         this.loading = false
 
       } catch (error) {
-        // console.log(error)
+        console.log(error)
         this.loading = false
         this.router.push('/login')
       }
     },
-    formatPrice(price) {
-      return `Rp ${parseInt(price).toFixed()}`;
+    async getProductDetail(id) {
+      this.loading = true
+      try {
+        const detail = this.products.list.filter((product) => parseInt(product.id) === parseInt(id))[0]
+
+        console.log("res detail", detail)
+
+        this.product_detail = detail
+        this.loading = false
+
+      } catch (error) {
+        console.log(error)
+        this.loading = false
+        this.router.push('/login')
+      }
     }
   },
   getters: {
-
+    formatPrice: () => {
+      return (price) => {
+        return `Rp ${parseInt(price).toFixed()}`;
+      }
+    },
   }
 })
 

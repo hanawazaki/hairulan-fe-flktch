@@ -37,7 +37,7 @@
                 <option value="6">6</option>
                 <option value="12">12</option>
               </select>
-              dari {{ storeProduct.product_list.length }}
+              dari {{ storeProduct.products.total }}
             </div>
             <div class="flex">
               <select name="" id="" class="border border-gray-600">
@@ -57,9 +57,8 @@
               :key="index"
             />
           </div>
-          {{ storeProduct.products.total }}
           <Pagination
-            :total="storeProduct.product_list.length"
+            :total="storeProduct.products.total"
             :itemsPerpage="perPage"
             v-model:current-page="currentPage"
             @update:current-page="handleChangepage"
@@ -82,16 +81,20 @@ import Pagination from "../../components/Pagination.vue";
 
 const storeAuth = useStoreAuth();
 const storeProduct = useStoreProduct();
+
+const price_from = ref("");
+const price_to = ref("");
+const orderBy = ref("product_name");
+const sort = ref("ASC");
+
 const params = reactive({
   keyword: "",
-  price_from: 10000,
-  price_to: 250000,
+  price: "",
   page: 1,
   limit: 10,
-  orderBy: "product_name",
-  sort: "ASC",
+  order: `${orderBy.value},${sort.value}`,
 });
-const router = useRouter();
+
 const perPage = ref(6);
 const currentPage = ref(1);
 
@@ -110,17 +113,19 @@ const handleSorting = (param) => {
 };
 
 storeAuth.checkTokenAvailability();
+
 storeProduct.getProducts(params);
 
 const paginatedItems = computed(() => {
   const start = (currentPage.value - 1) * perPage.value;
   const end = start + perPage.value;
 
-  return storeProduct.product_list.slice(start, end);
+  return storeProduct.products.list.slice(start, end);
 });
 
 const handleChangepage = (page) => {
-  console.log("change to page", page);
+  // console.log("change to page", page);
+  currentPage.value = page;
 };
 </script>
 
