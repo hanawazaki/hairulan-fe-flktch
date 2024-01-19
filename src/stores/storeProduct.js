@@ -557,7 +557,7 @@ export const useStoreProduct = defineStore('storeProduct', {
       }
     },
     formatPrice(price) {
-      return `$${parseInt(price).toFixed(2)}`;
+      return `Rp ${parseInt(price).toFixed()}`;
     }
   },
   getters: {
